@@ -15,6 +15,18 @@
 		4C206E4020896D1400339A57 /* Swift新元素1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C206E3F20896D1400339A57 /* Swift新元素1.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D112AAF720B7AAF400026E9E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4C206E2A20896CE700339A57 /* Swifter-tips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swifter-tips.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C206E2D20896CE700339A57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +89,7 @@
 				4C206E2620896CE700339A57 /* Sources */,
 				4C206E2720896CE700339A57 /* Frameworks */,
 				4C206E2820896CE700339A57 /* Resources */,
+				D112AAF720B7AAF400026E9E /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -279,6 +292,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Swifter-tips",
+				);
 				INFOPLIST_FILE = "Swifter-tips/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jiang.Swifter-tips";
@@ -293,6 +310,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Swifter-tips",
+				);
 				INFOPLIST_FILE = "Swifter-tips/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jiang.Swifter-tips";
