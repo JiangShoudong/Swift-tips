@@ -227,3 +227,50 @@ Tiger().eat(meat)
 let grass = Grass()
 Sheep().eat(grass)
 
+/*
+ 16.可变参数函数: ???
+ **/
+
+func sum(input: Int...) -> Int {
+    return input.reduce(0, +)
+//    return input.reduce(0, { (result, num) -> Result in
+//        return result + num
+//    })
+}
+
+print(sum(input: 1, 2, 3, 4, 5))
+//let letters = "abracadabra"
+//let letterCount = letters.reduce(into: [:]) { counts, letter in
+//    counts[letter, default: 0] += 1
+//}
+//print(lettercount)
+
+/*
+ 17.初始化顺序：与OC不同，swift的初始化方法需要保证类型的所有属性都被初始化。所以初始化方法的调用顺序很有讲究。在某个类的子类中，初始化方法的语句的调用顺序并不是随意的，我们需要保证在当前子类实例的成员初始化完成之后才能调用父类的初始化方法。
+ 
+    一般来说，子类的初始化顺序是：
+    1、设置子类自己需要初始化的参数；
+    2、调用父类相应的初始化方法，super.init()：swift会自动对父类的对应的init方法进行调用，也就是说这一步是可以不写的。
+    3、对父类中需要改变的成员进行设定：这一步视情况而定。
+ **/
+
+/*
+ 18.Designated, Convenience, 和 Required
+ 总结：
+ 1、初始化路径必须保证对象完全初始化，这可以通过调用本类型的designated初始化方法来得到保证。
+ 2、子类的designated初始化方法必须调用父类的designated方法，以保证父类也完成初始化。
+ 3、对于某些我们希望子类一定实现的designated方法，我们可以通过添加required关键字进行限制，强制子类实现这个方法。
+ 4、加上convenience关键字的初始化方法成为swift初始化方法中的“二等公民”，只作为补充和使用上的方便。所有的convenience初始化方法都必须调用同一个类中的designated初始化方法完成设置。
+ 5、convenience的初始化方法是不能被子类重写或者是从子类中以super方法调用的。
+ 6、只要子类中实现重写了父类convenience方法所需要的init方法的话，我们在子类中就也可以使用父类的convenience初始化方法了。
+ **/
+
+/*
+ 19.初始化返回nil：
+    可以在init声明时在其后加上一个? 或者 ！ 来表示初始化失败时可能返回nil的能力。
+    convenience init?(string URLString: String)
+ **/
+
+/*
+ 19.static 和 class：
+ **/
