@@ -89,11 +89,102 @@ func ahah<T>(optional: T?, defaultValue: @autoclosure () -> T) -> T {
 var level: Int?
 let startLevel: Int = 4
 
-print(ahah(optional: level, defaultValue: startLevel)
+print(ahah(optional: level, defaultValue: startLevel))
 //TODO: 但是如果这个默认值是通过一系列复 杂计算得到的话，可能会成为浪费 -- 因为其实如果 optional不是 nil 的话，我们实际上是完全 没有用到这个默认值，而会直接返回 optional 解包后的值的 ???  举例说明？？？？？
+/*
+ 6.@escaping：
+ **/
 
+/*
+ 7.Optional Chaining：使用的时候可以通过Optional Binding 来判定方法是否调用成功。
+ **/
 
+/*
+ 8.操作符：重载运算符，注意使用的时候要声明这个重载运算符
+ **/
 
+/*
+ 9.func修饰词： inout等。要注意的是参数的修饰是具有传递性的，就是说对于跨越层级的调用，我们要保证参数的修饰是统一的。
+ **/
+
+/*
+ 10.字面量表达
+ **/
+
+/*
+ 11.下标：给Array传递一个数组类型的下标，取出特定的几个元素。
+ **/
+extension Array {
+    subscript(input: [Int]) -> ArraySlice<Element> {
+        get {
+            var result = ArraySlice<Element>()
+            for i in input {
+                assert(i < self.count, "Index out of range!")
+                result.append(self[i])
+            }
+            return result
+        }
+        set {
+            for (index, i) in input.enumerated() {
+                assert(i < self.count, "Index out of range!")
+                self[i] = newValue[index]
+            }
+        }
+    }
+}
+
+var array = [1, 2, 3, 4, 5]
+array[[0, 2, 3]]
+
+/*
+ 12.方法嵌套：方法成为一等公民了，也就是说我们可以将方法当做变量或者参数来使用了。更进一步，我们可以在方法中定义新的方法，这给代码层级和访问级别控制带来新的选择。方法内部的几个方法不用抽到最外层，这样讲内部相关的几个方法放到appendQuery中，不失为一种更好的组织形式。
+ **/
+func appendQuery(url: String,
+                 key: String,
+                 value: AnyObject) -> String {
+    func appendQueryDictionary(url: String,
+                               key: String,
+                               value: [String: AnyObject]) -> String {
+        // ...
+        var result = ""
+        return result
+    }
+    func appendQueryArray(url: String,
+                               key: String,
+                               value: [AnyObject]) -> String {
+        // ...
+        var result = ""
+        return result
+    }
+
+    func appendQuerySingle(url: String,
+                               key: String,
+                               value: AnyObject) -> String {
+        // ...
+        var result = ""
+        return result
+    }
+    
+    if let dictionary = value as? [String: AnyObject] {
+        return appendQueryDictionary(url: url, key: key, value: dictionary)
+    } else if let array = value as? [AnyObject] {
+        return appendQueryArray(url: url, key: key, value: array)
+    } else {
+        return appendQuerySingle(url: url, key: key, value: value)
+    }
+}
+
+/*
+ 13.命名空间：OC中一个一直以来令人诟病的地方就是没有命名空间，在应用开发时，所有的代码和引用的静态库最终都会被编译到同一个域和二进制中，这就很容易造成冲突。和C#这样的显式在文件中指定命名空间不同，swift的命名空间是基于module而不是在代码中显示的指明，每个module代表了swift中的一个命名空间。
+ **/
+
+/*
+ 14.typealias：
+ **/
+
+/*
+ 15.associdatedtype：重要未看~~~
+ **/
 
 
 
